@@ -397,12 +397,12 @@ nav {
     margin: -40% 0% 0% 180%;
   }
 
-  .special-instructons {
+  .text-input-container {
     margin: 3% 3.3% 3% 3.3%;
     padding: 0.7%;
   }
 
-  .add-instructions {
+  .text-input {
     height: 40px;
     width: 70%;
   }

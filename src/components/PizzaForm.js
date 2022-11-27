@@ -34,10 +34,27 @@ export default function PizzaForm(props) {
             </nav>
         </div>
         <div className='form-container'>
-            <form className="form">
+            <form className="form" id="pizza-form">
                 <h2 className="build-pizza-header">Build Your Own Pizza</h2>
                 <img className='pizza-form-image' src={picture}/>
                 <h3 className="form-intro">Build Your Own Za, Brah!</h3>
+                
+                <div className="form-label-description">
+                    <h3>Enter Your Name Here<br/><span className="breakpoint"><em>required</em></span></h3>
+                </div>
+
+                <div className="text-input-container">
+                    <label>
+                        <input
+                        className="text-input"
+                        type="text"
+                        name="name"
+                        value={values.name}
+                        id="name-input"
+                        />
+                    </label>
+                </div>
+
                 <label className="form-label">
                     <div className="form-label-description">
                         <h3>Choice of size<br/><span className="breakpoint"><em>required</em></span></h3>
@@ -46,7 +63,7 @@ export default function PizzaForm(props) {
                     className="select-size"
                     value={values.role}
                     name="role"
-                    id="roleSelect"
+                    id="size-dropdown"
                     >
                         <option value='Small'>Small</option>
                         <option value="Medium">Medium</option>
@@ -147,11 +164,11 @@ export default function PizzaForm(props) {
                     <h3>Special Instructions</h3>
                 </div>
 
-                <div className="special-instructons">
+                <div className="text-input-container">
                     <label>
                         <input 
                         onChange={onChange} 
-                        className='add-instructions' 
+                        className='text-input' 
                         type="text" 
                         name="special"
                         value={values.special}

@@ -9,6 +9,7 @@ import data from "./data/data";
 import axios from "axios";
 
 const initialFormValues = {
+  name: "",
   size: "",
   sauce: "",
   toppings: "",
@@ -32,6 +33,7 @@ const initialFormValues = {
 }
 
 const initialFormErrors = {
+  name: '',
   size: '',
   sauce: '',
   toppings: '',
@@ -113,7 +115,7 @@ const App = () => {
     <>
     <div className='App'> 
         <Switch>
-          <Route path="/PizzaForm">
+          <Route path="/pizza">
             <PizzaForm 
             image={foodList}
             change={onChange}

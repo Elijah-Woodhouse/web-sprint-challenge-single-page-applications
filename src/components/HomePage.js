@@ -6,7 +6,7 @@ export default function HomePage() {
 
     const routeToPizza = () => {
         console.log('submitting...')
-        history.push('/PizzaForm')
+        history.push('/pizza')
     }
 
     return (
