@@ -15,6 +15,11 @@ export default function PizzaForm(props) {
         errors,
       } = props
 
+      const onSubmit = evt => {
+        evt.preventDefault()
+        submit()
+      }
+
     const onChange = evt => {
         const { name, value, checked, type } = evt.target
         const valueToUse = type === "checkbox" ? checked : value
@@ -34,7 +39,11 @@ export default function PizzaForm(props) {
             </nav>
         </div>
         <div className='form-container'>
-            <form className="form" id="pizza-form">
+            <form 
+            className="form" 
+            id="pizza-form"
+            onSubmit={onSubmit}
+            >
                 <h2 className="build-pizza-header">Build Your Own Pizza</h2>
                 <img className='pizza-form-image' src={picture}/>
                 <h3 className="form-intro">Build Your Own Za, Brah!</h3>
@@ -51,6 +60,7 @@ export default function PizzaForm(props) {
                         name="name"
                         value={values.name}
                         id="name-input"
+                        onChange={onChange}
                         />
                     </label>
                 </div>
@@ -172,8 +182,19 @@ export default function PizzaForm(props) {
                         type="text" 
                         name="special"
                         value={values.special}
+                        id="special-text"
                         />
                     </label>
+                </div>
+
+                <button disabled={disabled}>Place Order</button>
+    
+                <div className='errors'>
+                    <div>{errors.name}</div>
+                    <div>{errors.size}</div>
+                    <div>{errors.sauce}</div>
+                    <div>{errors.quantity}</div>
+                    <div>{errors.substitute}</div>
                 </div>
 
             </form>
@@ -182,3 +203,11 @@ export default function PizzaForm(props) {
 
     )
 }
+
+
+// // name: '',
+// size: '',
+// sauce: '',
+// toppings: '',
+// quantity: '',
+// substitute: '',

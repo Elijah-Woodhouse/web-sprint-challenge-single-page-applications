@@ -398,7 +398,7 @@ nav {
   }
 
   .text-input-container {
-    margin: 3% 3.3% 3% 3.3%;
+    margin: 3% 3.3% 1% 3.3%;
     padding: 0.7%;
   }
 
@@ -406,6 +406,15 @@ nav {
     height: 40px;
     width: 70%;
   }
+
+
+    .errors {
+      margin: 8px;
+      font-size: 0.7em;
+      color: red;
+    }
+
+
   /*
   content
   padding

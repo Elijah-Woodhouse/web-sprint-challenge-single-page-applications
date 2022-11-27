@@ -80,6 +80,10 @@ const App = () => {
   }, [])
 
 
+  useEffect(() => {
+    schema.isValid(formValues).then(valid => setDisabled(!valid))
+  }, [formValues])
+
 
   const validate = (name, value) => {
     yup.reach(schema, name)
@@ -100,9 +104,24 @@ const App = () => {
 
   const formSubmit = () => {
     const newOrder = {
+      name: formValues.name.trim(),
       size: formValues.size.trim(),
       sauce: formValues.sauce.trim(),
-      toppings: formValues.toppings.trim(),
+      toppings: [
+        'Pepperoni', 
+        'Sausage', 
+        'Canadian Bacon', 
+        'Spicy Italian Sausage', 
+        'Grilled Chicken', 
+        'Onion', 
+        'Green Peppers', 
+        'Diced Tomatoes', 
+        'Black Olives', 
+        'Roasted Garlic', 
+        'Artichoke Hearts', 
+        'Three Cheese', 
+        'Pineapple', 
+        'Extra Cheese'].filter(topping => !!formValues[topping]),
       substitute: formValues.substitute.trim(),
       special: formValues.special.trim(),
       quantity: formValues.quantity.trim()
