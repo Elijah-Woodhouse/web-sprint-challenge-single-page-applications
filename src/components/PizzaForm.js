@@ -151,6 +151,7 @@ export default function PizzaForm(props) {
                                 <div className="checkbox">
                                     <label>
                                         <input
+                                            id={toppingsValueList[idx]}
                                             key={idx}
                                             type="checkbox"
                                             name={toppingsValueList[idx]}
