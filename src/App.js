@@ -10,7 +10,7 @@ import axios from "axios";
 
 const initialFormValues = {
   name: "",
-  size: "",
+  size: "small",
   sauce: "",
   toppings: "",
   substitute: false,
@@ -36,12 +36,8 @@ const initialFormErrors = {
   name: '',
   size: '',
   sauce: '',
-  toppings: '',
-  quantity: '',
-  substitute: '',
 }
 
-const initialDisabled = true;
 
 function grabData() {
   return Promise.resolve({success: true, data})
@@ -53,7 +49,6 @@ const App = () => {
   const [foodList, setFoodList] = useState([]);
   const [orders, setOrder] = useState([]);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
-  const [disabled, setDisabled] = useState(initialDisabled);
 
   const handleError = err => {debugger};
 
@@ -79,10 +74,6 @@ const App = () => {
     grabData().then(res => setFoodList(res.data))
   }, [])
 
-
-  useEffect(() => {
-    schema.isValid(formValues).then(valid => setDisabled(!valid))
-  }, [formValues])
 
 
   const validate = (name, value) => {
@@ -110,23 +101,25 @@ const App = () => {
       toppings: [
         'Pepperoni', 
         'Sausage', 
-        'Canadian Bacon', 
-        'Spicy Italian Sausage', 
-        'Grilled Chicken', 
+        'Canadian_Bacon', 
+        'Spicy_Italian_Sausage', 
+        'Grilled_Chicken', 
         'Onion', 
-        'Green Peppers', 
-        'Diced Tomatoes', 
-        'Black Olives', 
-        'Roasted Garlic', 
-        'Artichoke Hearts', 
-        'Three Cheese', 
+        'Green_Peppers', 
+        'Diced_Tomatoes', 
+        'Black_Olives', 
+        'Roasted_Garlic', 
+        'Artichoke_Hearts', 
+        'Three_Cheese', 
         'Pineapple', 
-        'Extra Cheese'].filter(topping => !!formValues[topping]),
-      substitute: formValues.substitute.trim(),
+        'Extra_Cheese'].filter(topping => !!formValues[topping]),
       special: formValues.special.trim(),
-      quantity: formValues.quantity.trim()
+      quantity: formValues.quantity.trim(),
+      substitute: formValues.substitute
     }
     postOrder(newOrder);
+    console.log(newOrder);
+    resetForm();
   }
   // item-list-wrapper, item-list-image, item-card
 
@@ -141,7 +134,6 @@ const App = () => {
             values={formValues}
             submit={formSubmit}
             errors={formErrors}
-            disabled={disabled}
             />
           </Route>
 
